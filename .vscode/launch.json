@@ -1,0 +1,93 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    // 
+    // ------------->>>>>>      WARNING: USE fine paths for apps!!!        <<<<<<-----------
+    // 
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "program": "",
+            "name": "Qt Cmake debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "logging": {
+                "moduleLoad": false,
+                "programOutput": true,
+                "engineLogging": true
+            },
+            "linux": {
+                "name": "Qt Cmake debug (linux)",
+                "type": "cppdbg",
+                "program": "${workspaceFolder}/build-${workspaceFolderBasename}-Debug/${workspaceFolderBasename}",
+                "request": "launch",
+                "preLaunchTask": "Build Debug (linux)",
+                "environment": [
+                    {
+                        "name": "PATH",
+                        "value": ""
+                    }
+                ],
+            },
+            "windows": {
+                "name": "Qt Cmake debug (windows)",
+                "type": "cppdbg",
+                "program": "${workspaceFolder}/build-${workspaceFolderBasename}-Debug/${workspaceFolderBasename}.exe",
+                "request": "launch",
+                "preLaunchTask": "Build Debug (windows)",
+                "environment": [
+                    {
+                        "name": "PATH",
+                        "value": "C:\\Qt\\Qt5.12.3\\5.12.3\\mingw73_64\\bin"
+                    }
+                ],
+            },
+            "visualizerFile": ""
+        },
+        {
+            "program": "",
+            "name": "Qt Cmake release",
+            "type": "cppdbg",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "logging": {
+                "moduleLoad": false,
+                "programOutput": true,
+                "engineLogging": true
+            },
+            "linux": {
+                "name": "Qt Cmake release (linux)",
+                "type": "cppdbg",
+                "program": "${workspaceFolder}/build-${workspaceFolderBasename}-Release/${workspaceFolderBasename}",
+                "request": "launch",
+                "preLaunchTask": "Build Release (linux)",
+                "environment": [
+                    {
+                        "name": "PATH",
+                        "value": ""
+                    }
+                ],
+            },
+            "windows": {
+                "name": "Qt Cmake release (windows)",
+                "type": "cppdbg",
+                "program": "${workspaceFolder}/build-${workspaceFolderBasename}-Release/${workspaceFolderBasename}.exe",
+                "request": "launch",
+                "preLaunchTask": "Build Release (windows)",
+                "environment": [
+                    {
+                        "name": "PATH",
+                        "value": "${env:PATH}"
+                    }
+                ],
+            },
+            "visualizerFile":""
+        }
+    ]
+}
