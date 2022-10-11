@@ -1,0 +1,172 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+
+    // WARNING!!!   --->>>   check path for Qt   <<<---
+
+    "version": "2.0.0",
+    "tasks": [
+        //Debug
+        {
+            "label": "Cmake configure Debug",
+            "type": "shell",
+            "command": "cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Debug -H${workspaceFolder} -B${workspaceFolder}/build-${workspaceFolderBasename}-Debug/ -G Ninja"
+        },
+        {
+            "label": "Create build Dir Debug (linux)",
+            "type": "shell",
+            "command": "mkdir -p ${workspaceFolder}/build-${workspaceFolderBasename}-Debug/"
+        },
+        {
+            "label": "Create build Dir Debug (windows)",
+            "type": "shell",
+            "command": "mkdir -Force ${workspaceFolder}/build-${workspaceFolderBasename}-Debug/"
+        },
+        {
+            "label": "Run make Debug",
+            "type": "shell",
+            "command": "ninja",
+            // ---->>>   if Ninja not installed   <<<----
+            //"command": "mingw32-make.exe ",
+            "options": {
+                "cwd": "${workspaceFolder}/build-${workspaceFolderBasename}-Debug/"
+            }
+        },
+        {
+            "label": "Clear build folder Debug",
+            "type": "shell",
+            "command": "cmake --build ${workspaceFolder}/build-${workspaceFolderBasename}-Debug/ --target clean",
+            "options": {
+                "cwd": "${workspaceFolder}/build-${workspaceFolderBasename}-Debug"
+            }
+        },
+        {
+            "label": "Build Debug (linux)",
+            "dependsOn": [
+                "Create build Dir Debug (linux)",
+                "Cmake configure Debug",
+                "Run make Debug"
+            ],
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Build Debug (windows)",
+            "dependsOn": [
+                "Create build Dir Debug (windows)",
+                "Cmake configure Debug",
+                "Run make Debug"
+            ],
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Clean build Debug (linux)",
+            "dependsOn": [
+                "Clear build folder Debug",
+                "Create build Dir Debug (linux)",
+                "Cmake configure Debug",
+                "Run make Debug"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "Clean build Debug (windows)",
+            "dependsOn": [
+                "Clear build folder Debug",
+                "Create build Dir Debug (windows)",
+                "Cmake configure Debug",
+                "Run make Debug"
+            ],
+            "dependsOrder": "sequence"
+        },
+        //Release
+        {
+            "label": "Cmake configure Release",
+            "type": "shell",
+            "command": "cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H${workspaceFolder} -B${workspaceFolder}/build-${workspaceFolderBasename}-Release/ -G Ninja"
+        },
+        {
+            "label": "Create build Dir Release (linux)",
+            "type": "shell",
+            "command": "mkdir -p ${workspaceFolder}/build-${workspaceFolderBasename}-Release/"
+        },
+        {
+            "label": "Create build Dir Release (windows)",
+            "type": "shell",
+            "command": "mkdir -Force ${workspaceFolder}/build-${workspaceFolderBasename}-Release/"
+        },
+        {
+            "label": "Run make Release",
+            "type": "shell",
+            "command": "ninja",
+            // ---->>>   if Ninja not installed   <<<----
+            //"command": "mingw32-make.exe "
+            "options": {
+                "cwd": "${workspaceFolder}/build-${workspaceFolderBasename}-Release/"
+            }
+        },
+        {
+            "label": "Clear build folder Release",
+            "type": "shell",
+            "command": "cmake --build ${workspaceFolder}/build-${workspaceFolderBasename}-Release/ --target clean",
+            "options": {
+                "cwd": "${workspaceFolder}/build-${workspaceFolderBasename}-Release"
+            }
+        },
+        {
+            "label": "Build Release (linux)",
+            "dependsOn": [
+                "Create build Dir Release (linux)",
+                "Cmake configure Release",
+                "Run make Release"
+            ],
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Build Release (windows)",
+            "dependsOn": [
+                "Create build Dir Release (windows)",
+                "Cmake configure Release",
+                "Run make Release"
+            ],
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Clean build Release (linux)",
+                "dependsOn": [
+                "Clear build folder Release",
+                "Create build Dir Release (linux)",
+                "Cmake configure Release",
+                "Run make Release"
+                ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "Clean build Release (windows)",
+                "dependsOn": [
+                "Clear build folder Release",
+                "Create build Dir Release (windows)",
+                "Cmake configure Release",
+                "Run make Release"
+                ],
+            "dependsOrder": "sequence"
+        }
+    ]
+}
